@@ -1,3 +1,4 @@
+"use strict";
 fetch("https://jsonplaceholder.typicode.com/posts")
   .then((res) => res.json())
   .then((posts) => {});
@@ -33,12 +34,25 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     console.log(evenUsersAndIds);
 
     // 3. Jag vill att du skapar en ny array som bara innehåller posts från användaren med userId 2.
-    const userId2 = posts.filter(({ userId }) => userId === 2);
-    console.log(userId2);
+    const postFromUser2 = posts.filter(({ userId }) => userId === 2);
+    console.log(postFromUser2);
 
     // 4. Din uppgift är att formatera om datan i postFromUser2. Jag vill att du ska ändra från att ha en array med posts till att ha ett objekt med två fält.
     // Det ena fältet ska vara userId och det andra fältet ska vara posts. Posts fältet ska vara en array som innehåller objekt med informationen {title, id, body}.
     // På så sätt slipper vi upprepa userId flera gånger och grupperar alla posts som en användare har skapat och lägger dem i ett objekt. Formatera om datan med reduce metoden.
-
+    const formatPostFromUser2 = postFromUser2.reduce(
+      (previous, primaryObject) => {
+        previous.userId = primaryObject.userId;
+        const post = {
+          title: primaryObject.title,
+          id: primaryObject.id,
+          body: primaryObject.body,
+        };
+        previous.push(post);
+        return previous;
+      },
+      []
+    );
+    console.log(formatPostFromUser2);
     // 5.
   });
