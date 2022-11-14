@@ -27,6 +27,10 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     console.log(userId);
 
     // 2. Gå igenom usersAndIds och filtrera efter userId som är jämna tal. Spara dessa värden i en array som heter evenUsersAndIds
+    const evenUsersAndIds = usersAndIds.filter((number) => {
+      return number.userId % 2 === 0;
+    });
+    console.log(evenUsersAndIds);
 
     // 3. Jag vill att du skapar en ny array som bara innehåller posts från användaren med userId 2.
 
