@@ -7,16 +7,24 @@ fetch("https://jsonplaceholder.typicode.com/posts")
   .then((posts) => {
     // 1. Gå igenom alla post och skapa en ny array som innehåller enbart userId och id. Den nya arrayen ska heta
 
-    const userIds = posts.map((post) => {
+    const testUserId = posts.map((post) => {
       return {
         userId: post.userId,
         id: post.id,
       };
     });
 
-    const uderTwo = posts.map(({ userId, id }) => ({ userId, id }));
+    const usersAndIds = posts.map(({ userId, id }) => ({ userId, id }));
+    console.log(usersAndIds);
 
     // 1.2  Ett vanligt problem som du kommer behöva lösa när du jobbar med data är att ändra formatet på det. Du kommer behöva göra det för Klarna checkouten bland annat. I listan just nu hittar du { userId, id, title, body }. Jag vill att du skapar en ny lista som ser likadan ut förutom att du döper om userId till user och grupperar title och body tillsammans i ett object som heter postContent. Så här ska arrayen se ut [{user, id, postContent: {title, body}},{user, id, postContent: {title, body}},...]
+
+    const userId = posts.map(({ userId, id, title, body }) => ({
+      user: userId,
+      id,
+      postContent: { title, body },
+    }));
+    console.log(userId);
 
     // 2. Gå igenom usersAndIds och filtrera efter userId som är jämna tal. Spara dessa värden i en array som heter evenUsersAndIds
 
