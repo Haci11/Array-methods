@@ -27,12 +27,16 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     console.log(userId);
 
     // 2. Gå igenom usersAndIds och filtrera efter userId som är jämna tal. Spara dessa värden i en array som heter evenUsersAndIds
-    const evenUsersAndIds = usersAndIds.filter((number) => {
-      return number.userId % 2 === 0;
+    const evenUsersAndIds = usersAndIds.filter(({ userId }) => {
+      return userId % 2 === 0;
     });
     console.log(evenUsersAndIds);
 
     // 3. Jag vill att du skapar en ny array som bara innehåller posts från användaren med userId 2.
+    const userId2 = posts.filter(({ userId }) => {
+      return userId === 2;
+    });
+    console.log(userId2);
 
     // 4. Din uppgift är att formatera om datan i postFromUser2. Jag vill att du ska ändra från att ha en array med posts till att ha ett objekt med två fält.
     // Det ena fältet ska vara userId och det andra fältet ska vara posts. Posts fältet ska vara en array som innehåller objekt med informationen {title, id, body}.
