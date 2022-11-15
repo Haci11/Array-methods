@@ -48,10 +48,10 @@ fetch("https://jsonplaceholder.typicode.com/posts")
           id: primaryObject.id,
           body: primaryObject.body,
         };
-        previous.push(post);
+        previous.post.push(post);
         return previous;
       },
-      []
+      { userId: 0, post: [] }
     );
     console.log(formatPostFromUser2);
     // 5.
